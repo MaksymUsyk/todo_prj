@@ -6,6 +6,9 @@ import { TaskController } from './task/task.controller';
 import { TaskModule } from './task/task.module';
 import { join } from "path";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,8 +21,14 @@ import { TypeOrmModule } from "@nestjs/typeorm";
     entities: [join(__dirname, '**', '*.entity.{ts,js}')],
     migrations: [join(__dirname, '**', '*.migration.{ts,js}')],
     synchronize: true
-  }),UserModule, TaskModule],
-  controllers: [AppController, TaskController],
-  providers: [AppService],
+  }), UserModule,
+    TaskModule,
+    AuthModule,
+    JwtModule
+  ],
+  controllers: [AppController,
+    // TaskController
+  ],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}
