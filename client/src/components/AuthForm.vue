@@ -7,9 +7,9 @@
         placeholder="Login"
         v-model:value="formData.login"
       >
-<!--        <template #prefix>-->
-          <user-outlined #prefix/>
-<!--        </template>-->
+        <template #prefix>
+          <font-awesome-icon icon="fa-regular fa-user" />
+        </template>
       </a-input>
     </a-form-item>
     <a-form-item
@@ -22,7 +22,7 @@
         v-model:value="formData.password"
       >
         <template #prefix>
-          <LockOutlined />
+          <font-awesome-icon icon="fa-solid fa-shield-halved" />
         </template>
       </a-input>
     </a-form-item>
@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import { ref } from "vue"
 
 export default {

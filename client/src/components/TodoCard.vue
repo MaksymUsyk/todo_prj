@@ -1,11 +1,11 @@
 <template>
   <div class="todo-card__wrapper">
-    <div class="todo-card__content">
+    <div class="todo-card__body">
       <div class="todo-card__header">
-        <h1>Hello</h1>
+        <h1>{{data.title}}</h1>
       </div>
       <div class="todo-card__description">
-        <p>Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum</p>
+        <p>{{data.description}}</p>
       </div>
     </div>
   </div>
@@ -13,7 +13,13 @@
 
 <script>
 export default {
-  name: "TodoCard"
+  name: "TodoCard",
+  props: {
+    data: {
+      type: Object,
+      default: () => null
+    }
+  }
 }
 </script>
 
@@ -24,10 +30,10 @@ export default {
     background: white;
     border: 1px solid #00000028;
     border-radius: 8px;
-    min-height: 300px;
+    min-height: 200px;
   }
 
-  &__content {
+  &__body {
     padding: 10px;
   }
 

@@ -5,3 +5,11 @@
   height: 100vh;
   font-weight: normal;
 }
+
+.ant-card-bordered {
+  border: 1px #636363 solid;
+}
+
+.ant-card-head {
+  border-bottom: 1px #636363 solid;
+}
