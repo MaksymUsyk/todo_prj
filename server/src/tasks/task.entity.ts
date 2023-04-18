@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'Task' })
-export class TasksEntity {
+export class TaskEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,12 +16,12 @@ export class TasksEntity {
   @Column({ type: 'text' })
   description: string;
 
-  @Column({ type: 'text' })
-  status: string;
+  @Column({ type: 'boolean', default: false })
+  isDone: boolean;
 
   @CreateDateColumn()
   created_at: Date;
 
-  @Column({ type: 'timestamptz' })
+  @Column({ type: 'timestamptz', default: null })
   completed_at: Date;
 }

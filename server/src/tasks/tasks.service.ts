@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TasksEntity } from './tasks.entity';
+import { TaskEntity } from './task.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
   constructor(
-    @InjectRepository(TasksEntity)
-    private readonly tasksRepository: Repository<TasksEntity>,
+    @InjectRepository(TaskEntity)
+    private readonly tasksRepository: Repository<TaskEntity>,
   ) {}
 
   async getAll() {
@@ -17,8 +17,8 @@ export class TasksService {
   }
 
   async create(dto: CreateTaskDto) {
-    const post = this.tasksRepository.create(dto);
-    return this.tasksRepository.save(post);
+    const task = this.tasksRepository.create(dto);
+    return this.tasksRepository.save(task);
   }
 
   async getById(id: string) {
@@ -33,8 +33,8 @@ export class TasksService {
     const task = await this.getById(id);
     task.title = dto.title;
     task.description = dto.description;
-    task.status = dto.status;
-    task.completed_at = new Date(dto.completed_at);
+    task.isDone = dto.isDone;
+    // task.completed_at = new Date(dto.completed_at);
 
     return this.tasksRepository.save(task);
   }
