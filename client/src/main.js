@@ -7,6 +7,8 @@ import AuthForm from "@/components/AuthForm.vue";
 import TodoCard from "@/components/TodoCard.vue";
 import 'ant-design-vue/dist/antd.css'
 
+import store from "@/store/store"
+
 import './assets/main.css'
 
 /* import the fontawesome core */
@@ -26,5 +28,7 @@ app.component('AuthPage', AuthPage)
   .component('AuthForm', AuthForm)
   .component('TodoCard', TodoCard)
   .component('font-awesome-icon', FontAwesomeIcon)
+
+app.use(store)
 
 app.use(Antd).mount('#app')

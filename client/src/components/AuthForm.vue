@@ -37,20 +37,24 @@
       >
         {{formMode === 'login' ? 'Log in' : 'Register'}}
       </a-button>
-      Or <a :onclick.prevent="toggleFormMode">{{formMode === 'login' ? 'Register' : 'Log in'}}</a>
+      Or <a @click.prevent="toggleFormMode">{{formMode === 'login' ? 'Register' : 'Log in'}}</a>
     </a-form-item>
   </a-Form>
 </template>
 
 <script>
 import { ref } from "vue"
+import { useStore } from "vuex"
+import { useRouter } from "vue-router"
 
 export default {
   setup() {
+    const store = useStore()
+    const router = useRouter()
     const formMode = ref('register')
 
     const toggleFormMode = () => {
-      formMode.value = formMode.value === 'login' ? 'register' : 'login';
+      formMode.value = formMode.value === 'login' ? 'register' : 'login'
     }
 
     const formData = ref({
@@ -59,7 +63,19 @@ export default {
       remember: true,
     });
 
-    const handleSubmit = () => {}
+    const onLogin = () => {
+      store.dispatch('AuthModule/onLogin', {
+        login: formData.value.username,
+        password: formData.value.password
+      }).then(() => {
+        router.push(({ name: 'Home '}))
+      })
+    }
+    const handleSubmit = () => {
+      if (formMode.value === 'login') {
+        onLogin()
+      }
+    }
 
     return { formMode, formData, toggleFormMode, handleSubmit }
   }
