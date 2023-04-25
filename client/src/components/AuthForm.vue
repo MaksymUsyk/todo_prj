@@ -1,5 +1,5 @@
 <template>
-  <a-form :onSubmit={handleSubmit} class="auth-form" :model="formData">
+  <a-form :onSubmit="handleSubmit" class="auth-form" :model="formData">
     <a-form-item
       name="login"
       :rules="[{ required: true, message: 'Please input your username!' }]">
@@ -46,29 +46,31 @@
 import { ref } from "vue"
 import { useStore } from "vuex"
 import { useRouter } from "vue-router"
-
+import { message } from 'ant-design-vue';
 export default {
   setup() {
     const store = useStore()
     const router = useRouter()
-    const formMode = ref('register')
+    const formMode = ref('login')
 
     const toggleFormMode = () => {
       formMode.value = formMode.value === 'login' ? 'register' : 'login'
     }
 
     const formData = ref({
-      username: "",
+      login: "",
       password: "",
       remember: true,
     });
 
     const onLogin = () => {
-      store.dispatch('AuthModule/onLogin', {
-        login: formData.value.username,
+      store.dispatch('auth/onLogin', {
+        login: formData.value.login,
         password: formData.value.password
       }).then(() => {
-        router.push(({ name: 'Home '}))
+        router.push(({ name: 'Dashboard' }))
+      }).catch(() => {
+        message.error('Your login or password is incorrect.')
       })
     }
     const handleSubmit = () => {
@@ -77,7 +79,7 @@ export default {
       }
     }
 
-    return { formMode, formData, toggleFormMode, handleSubmit }
+    return { formMode, formData, toggleFormMode, handleSubmit, onLogin }
   }
 }
 </script>

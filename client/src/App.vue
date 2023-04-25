@@ -1,20 +1,9 @@
 <script>
-import AuthPage from '@/pages/AuthPage.vue'
-import TodosPage from "@/pages/TodosPage.vue"
 export default {
-  name: 'App',
-  components: {
-    TodosPage,
-    AuthPage
-  },
+  name: 'App'
 }
 </script>
 
 <template>
-  <TodosPage/>
-<!--  <AuthPage/>-->
+  <router-view/>
 </template>
-
-<style scoped>
-
-</style>

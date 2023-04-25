@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "AuthPage"
+  name: "AuthPage",
+  beforeCreate() {
+    if (localStorage.hasOwnProperty('token')) {
+      this.$router.push({ name:'Dashboard' })
+    }
+  }
 }
 </script>
 

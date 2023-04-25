@@ -8,6 +8,7 @@ import TodoCard from "@/components/TodoCard.vue";
 import 'ant-design-vue/dist/antd.css'
 
 import store from "@/store/store"
+import router from "@/router"
 
 import './assets/main.css'
 
@@ -30,5 +31,5 @@ app.component('AuthPage', AuthPage)
   .component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(store)
-
+app.use(router)
 app.use(Antd).mount('#app')
