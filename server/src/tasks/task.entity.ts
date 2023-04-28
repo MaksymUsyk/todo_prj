@@ -2,26 +2,26 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+  PrimaryGeneratedColumn
+} from 'typeorm'
 
 @Entity({ name: 'Task' })
 export class TaskEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column({ type: 'text' })
-  title: string;
+  title: string
 
   @Column({ type: 'text' })
-  description: string;
+  description: string
 
   @Column({ type: 'boolean', default: false })
-  isDone: boolean;
+  isDone: boolean
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at: Date
 
   @Column({ type: 'timestamptz', default: null })
-  completed_at: Date;
+  completed_at: Date
 }

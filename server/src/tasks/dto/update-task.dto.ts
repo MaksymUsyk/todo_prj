@@ -3,5 +3,4 @@ export class UpdateTaskDto {
   readonly title: string
   readonly description: string
   readonly isDone: boolean
-  // readonly completed_at: string
 }

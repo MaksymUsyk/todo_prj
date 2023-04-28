@@ -6,9 +6,9 @@ import {
   HttpStatus,
   Post,
   Request
-} from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { Public } from '../decorators/public.decorator';
+} from '@nestjs/common'
+import { AuthService } from './auth.service'
+import { Public } from '../decorators/public.decorator'
 
 @Controller('auth')
 export class AuthController {
@@ -18,18 +18,18 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   signIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.signIn(signInDto.login, signInDto.password);
+    return this.authService.signIn(signInDto.login, signInDto.password)
   }
 
   @Public()
   @HttpCode(HttpStatus.OK)
   @Post('register')
   signUp(@Body() signUpDto: Record<string, any>) {
-    return this.authService.signUp(signUpDto.login, signUpDto.password);
+    return this.authService.signUp(signUpDto.login, signUpDto.password)
   }
 
   @Get('profile')
   getProfile(@Request() req) {
-    return req.user;
+    return req.user
   }
 }
