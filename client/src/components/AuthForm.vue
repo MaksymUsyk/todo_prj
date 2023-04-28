@@ -69,8 +69,8 @@ export default {
         password: formData.value.password
       }).then(() => {
         router.push(({ name: 'Dashboard' }))
-      }).catch(() => {
-        message.error('Your login or password is incorrect.')
+      }).catch((error) => {
+        message.error(error.message)
       })
     }
     const handleSubmit = () => {

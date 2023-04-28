@@ -1,24 +1,24 @@
 <template>
-  <div class="todos-page__wrapper">
-    <a-layout class="todos-page__container">
-      <a-layout-content>
-        <a-row class="row" :gutter="[16, 16]">
-          <a-col v-for="todo in todos" :key="todo.id" span="8">
+  <a-layout class="dashboard">
+    <DashboardHeader />
+    <a-layout-content class="todos">
+      <a-row class="row" :gutter="[16, 16]">
+        <a-col v-for="todo in todos" :key="todo.id" span="8">
 <!--            <TodoCard :data="todos[0]"/>-->
-            <TodoCardAnt :data="todo"/>
-          </a-col>
-        </a-row>
-      </a-layout-content>
-    </a-layout>
-  </div>
+          <TodoCardAnt :data="todo"/>
+        </a-col>
+      </a-row>
+    </a-layout-content>
+  </a-layout>
 </template>
 
 <script>
 import TodoCardAnt from "@/components/TodoCardAnt.vue"
+import DashboardHeader from "@/components/DashboardHeader.vue"
 
 export default {
-  name: "TodosPage",
-  components: { TodoCardAnt },
+  name: "Dashboard",
+  components: { DashboardHeader, TodoCardAnt },
   data() {
    return {
      todos: [
@@ -107,9 +107,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.todos-page {
-  &__container {
-    background: white;
+.dashboard {
+  .todos {
+    padding: 20px;
   }
 }
 </style>

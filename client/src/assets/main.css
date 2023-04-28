@@ -1,9 +1,15 @@
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /*padding: 2rem;*/
   height: 100vh;
   font-weight: normal;
+}
+
+.ant-layout-header {
+  flex: unset;
+  justify-content: space-between;
+  display: flex;
 }
 
 .ant-card-bordered {

@@ -8,7 +8,7 @@ const isAuthorized = localStorage.hasOwnProperty('token')
 
 const authGuard = function (to, from, next) {
   if (to.meta.needAuth && !isAuthorized) {
-    next({ name: 'Home' })
+    next({ name: 'AuthPage' })
   } else {
     next()
   }
@@ -17,7 +17,7 @@ const authGuard = function (to, from, next) {
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'AuthPage',
     component: () => import('@/pages/AuthPage.vue'),
     meta: {
       needAuth: false // Important to prevent infinity reloading
@@ -25,13 +25,12 @@ const routes = [
   }, {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import('@/pages/TodosPage.vue'),
+    component: () => import('@/pages/Dashboard.vue'),
     meta: { needAuth: true }
   }
 ]
 
 const router = createRouter({
-  // history: createWebHistory('http://localhost:5173/'),
   history: createWebHistory(),
   routes
 })

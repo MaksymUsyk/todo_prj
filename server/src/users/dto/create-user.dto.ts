@@ -1,5 +1,4 @@
-export class UpdateUserDto {
-  readonly id: string
+export class CreateUserDto {
   readonly login: string
   readonly password: string
 }
